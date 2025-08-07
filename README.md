@@ -28,6 +28,14 @@ dkms build -m it87_wdt_dkms -v 1.0
 dkms install -m it87_wdt_dkms -v 1.0
 ```
 
+Make the module be automatically loaded during boot and blacklist some potentially conflicting modules:
+
+```
+cd /usr/src/it87_wdt_dkms-1.0/
+cp it87_wdt_dkms.conf /etc/modules-load.d/
+cp blacklist_iTCO_wdt.conf /etc/modprobe.d/
+```
+
 ## Rest
 
 Install and activate the `watchdog` service, enable the Watchdog timeout in your UEFI BIOS and see if your machine doesn't randomly reboot now. 
